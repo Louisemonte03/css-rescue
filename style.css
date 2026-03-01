@@ -1,0 +1,179 @@
+:root {
+  /* ===== EEND ===== */
+  --duck-color-body: #ffb800;
+  --duck-color-body-dark: #ff9c00;
+  --duck-color-body-light: #ffd894;
+  --duck-color-beak: #ff5400;
+  --duck-color-feet: #c94200;
+  --duck-color-eyes: #403644;
+
+  /* ===== ACHTERGROND LAND ===== */
+  --earth-land-color: #a47148;
+  --earth-sky-color: #bfe4ff;
+  --earth-grass-color: #6bbf59;
+  --earth-grass-color-dark: #60832e;
+
+  /* ===== ACHTERGROND WATER ===== */
+  --water-color-medium: #4fb3ff;
+  --water-color-light: #bfe4ff;
+  --water-color-dark: #2f7fd1;
+
+  /* ===== algemeen ===== */
+
+  --color-white: #ffffff;
+}
+
+h1 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+}
+
+header {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #4fb3ff;
+}
+
+main {
+  flex: 1; /* neemt resterende hoogte */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main section {
+  background-color: white;
+  max-width: 800px;
+  width: 100%;
+  min-height: 800px;
+  border-radius: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+main section div:nth-of-type(1) {
+  display: flex;
+  gap: 30px;
+}
+
+main section div:nth-of-type(1) {
+  background-color: var(--duck-color-body);
+  width: 190px;
+  height: 190px;
+  border-radius: 100%;
+  position: relative;
+  top: 35px;
+  left: 60px;
+  z-index: 10; 
+
+}
+
+main section div:nth-of-type(2) type {
+  border: none;
+  border-radius: none;
+}
+
+main section div:nth-of-type(2) {
+  background-color: var(--duck-color-body);
+  width: 400px;
+  height: 220px;
+  border-radius: 30% 60% 60% 60% / 60% 60% 60% 60%;
+  rotate: 3deg;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: +99;
+}
+
+section > div:nth-of-type(3) {
+  position: absolute;
+  top: 400px;
+  z-index: 20;
+  left: 280px;
+}
+
+section > div:nth-of-type(3) input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: white;
+  position: relative;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+section > div:nth-of-type(3) input[type="checkbox"]::after {
+  content: "";
+  width: 18px;
+  height: 18px;
+  background-color: var(--duck-color-eyes);
+  border-radius: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+
+}
+
+main section ul {
+  display: flex;
+  gap: 20px;
+}
+
+main section ul li {
+  list-style: none;
+  width: 15px;
+  height: 60px;
+  background-color: var(--duck-color-feet);
+  border-radius: 10px;
+  position: relative;
+  top: -35px;
+}
+
+main section ul li input {
+  display: flex;
+  justify-content: end;
+}
+
+section div:nth-of-type(4) {
+  position: absolute;
+  top: 450px;
+  left: 300px;
+  transform: rotate(15deg);
+  z-index: 5;
+
+}
+
+section div:nth-of-type(4) input {
+  background-color: var(--duck-color-beak);
+  display: flex;
+  flex-direction: column;
+  border: none;
+  border-radius: 10px;
+  width: 100px;
+  height: 20px;
+}
+
+section div:nth-of-type(4) input:nth-of-type(1) {
+  transform: rotate(-13deg);
+  position: relative;
+  top: 8px;
+}
+
+section div:nth-of-type(4) input:nth-of-type(2) {
+  transform: rotate(5deg);
+}

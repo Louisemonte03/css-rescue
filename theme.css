@@ -1,0 +1,204 @@
+:root {
+  /* ===== EEND ===== */
+  --duck-color-body: #ffb800;
+  --duck-color-body-dark: #ff9c00;
+  --duck-color-body-light: #ffd894;
+  --duck-color-beak: #ff5400;
+  --duck-color-feet: #c94200;
+  --duck-color-eyes: #403644;
+
+  /* ===== ACHTERGROND LAND ===== */
+  --earth-land-color: #a47148;
+  --earth-sky-color: #bfe4ff;
+  --earth-grass-color: #6bbf59;
+  --earth-grass-color-dark: #60832e;
+
+  /* ===== ACHTERGROND WATER ===== */
+  --water-color-medium: #4fb3ff;
+  --water-color-light: #bfe4ff;
+  --water-color-dark: #2f7fd1;
+
+  /* ===== algemeen ===== */
+
+  --color-white: #ffffff;
+}
+
+* {
+  font-family: sans-serif;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background-color: var(--earth-sky-color);
+}
+
+main section:nth-of-type(1) {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main section:nth-of-type(1) div:nth-of-type(1) {
+  background-color: var(--earth-sky-color);
+  flex: 1.25;
+}
+
+main section:nth-of-type(1) div:nth-of-type(2) {
+  background-color: var(--earth-grass-color);
+  flex: 1;
+}
+
+main section:nth-of-type(1) div:nth-of-type(3) {
+  background-color: var(--earth-land-color);
+  flex: 0.75;
+}
+
+/* hier komen de wolkjes */
+main section div:nth-of-type(1),
+main section div:nth-of-type(2) {
+  position: relative;
+  overflow: hidden;
+}
+
+section div ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+section div:nth-of-type(1) ul li {
+  position: absolute;
+}
+
+section div:nth-of-type(1) ul li:nth-of-type(1) {
+  left: 10%;
+  top: 50px;
+}
+section div:nth-of-type(1) ul li:nth-of-type(2) {
+  left: 45%;
+  top: 120px;
+}
+section div:nth-of-type(1) ul li:nth-of-type(3) {
+  right: 15%;
+  top: 40px;
+}
+
+section div:nth-of-type(1) button {
+  position: absolute;
+  background-color: var(--color-white);
+  border-radius: 50%;
+  border: none;
+  width: 120px;
+  height: 100px;
+}
+
+section div:nth-of-type(1) button:nth-of-type(1) {
+  left: -40px;
+  top: 20px;
+}
+section div:nth-of-type(1) button:nth-of-type(2) {
+  left: 0;
+  top: 0;
+  width: 140px;
+  height: 110px;
+  z-index: 2;
+}
+section div:nth-of-type(1) button:nth-of-type(3) {
+  left: 60px;
+  top: 20px;
+}
+
+/* hier komt de struik  */
+
+section div:nth-of-type(2) ul li {
+  position: absolute;
+  bottom: 40px;
+  left: 20%;
+  width: 450px;
+  height: 200px;
+}
+
+section div:nth-of-type(2) button {
+  position: absolute;
+  background-color: var(--earth-grass-color-dark);
+  border: none;
+  border-radius: 50%;
+  bottom: 40px;
+}
+
+/* Linker bol */
+section div:nth-of-type(2) button:nth-of-type(1) {
+  width: 150px;
+  height: 150px;
+  left: 0;
+  z-index: 1;
+  background-color: #4a7c3f;
+}
+
+/* Middelste (grootste) bol */
+section div:nth-of-type(2) button:nth-of-type(2) {
+  width: 250px;
+  height: 220px;
+  left: 80px;
+  z-index: 2;
+  background-color: #5a9e50;
+}
+
+/* Rechter bol */
+section div:nth-of-type(2) button:nth-of-type(3) {
+  width: 150px;
+  height: 150px;
+  left: 280px;
+  z-index: 1;
+  background-color: #4a7c3f;
+}
+
+/* check theme swticher */
+
+/* Water achtegrond gedeelte */
+
+main section:nth-of-type(2) {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #403644;
+  display: none;
+}
+
+main section:nth-of-type(2) div:nth-of-type(1) {
+  background-color: var(--earth-sky-color);
+  flex: 1.25;
+}
+
+main section:nth-of-type(2) div:nth-of-type(2) {
+  background-color: var(--water-color-medium);
+  flex: 1;
+}
+
+input[type="radio"]:nth-of-type(2):checked ~ main section:nth-of-type(1) {
+  display: none;
+}
+input[type="radio"]:nth-of-type(2):checked ~ main section:nth-of-type(2) {
+  display: flex;
+}
+
+/* label gedeelte */
+
+header label {
+  cursor: pointer;
+  padding: 40px;
+  background-color: #2f7fd1;
+  color: white;
+}
+
+header {
+  height: 50px;
+  align-items: center;
+  display: flex;
+  gap: 20px;
+}
+
+input[type="radio"] {
+  display: none;
+}
