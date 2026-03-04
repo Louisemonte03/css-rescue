@@ -7,16 +7,29 @@
     <link rel="stylesheet" href="theme.css" />
   </head>
   <body>
-    <input type="radio" name="theme-switcher" id="land" checked />
-    <input type="radio" name="theme-switcher" id="water" />
     <header>
-      <label for="land">On land</label>
-      <label for="water">In water</label>
-    </header>
-    <main>
-      <!-- hier komt de achtegrond land -->
+      <h1>Test hier komt de theme switcher</h1>
       <section>
-        <!-- hier komen de wolkjes en blauwe lucht -->
+        <nav>
+          <label>
+            <input type="radio" name="theme-switcher" checked />
+            <span>On land</span>
+          </label>
+
+          <label>
+            <input type="radio" name="theme-switcher" />
+            <span>In water</span>
+          </label>
+
+          <span title="glider"></span>
+        </nav>
+      </section>
+    </header>
+
+    <main>
+      <!-- hier komt de vaste landachtegrond land -->
+      <section>
+        <!-- eerste section komen wolkjes -->
         <div>
           <ul>
             <li>
@@ -36,7 +49,6 @@
             </li>
           </ul>
         </div>
-        <!-- hier komen de groene gras en struik-->
         <div>
           <ul>
             <li>
@@ -48,8 +60,10 @@
         </div>
         <div></div>
       </section>
-      <!-- hier komt de water achtergrond -->
+
+      <!-- hier komt de water achtrgrond laag -->
       <section>
+        <!-- ook hier komen de wolkjes -->
         <div>
           <ul>
             <li>
@@ -69,10 +83,12 @@
             </li>
           </ul>
         </div>
-        <div></div>
         <div></div>
       </section>
     </main>
-    <footer></footer>
+    <!-- in footer komt keyarrows  -->
+    <footer>
+      <h2>ey arrows komen hier</h2>
+    </footer>
   </body>
 </html>

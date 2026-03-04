@@ -30,23 +30,50 @@
 body {
   padding: 0;
   margin: 0;
-  background-color: var(--earth-sky-color);
-}
-
-main section:nth-of-type(1) {
-  height: 100vh;
+  background-color: white;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
 }
 
+header,
+footer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+main {
+  display: block;
+  position: relative;
+  width: 80vw;
+  height: 60vh;
+  margin: auto;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+main section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* achtergrond kleuren van land */
+
 main section:nth-of-type(1) div:nth-of-type(1) {
   background-color: var(--earth-sky-color);
-  flex: 1.25;
+  flex: 1.5;
 }
 
 main section:nth-of-type(1) div:nth-of-type(2) {
   background-color: var(--earth-grass-color);
-  flex: 1;
+  flex: 0.75;
 }
 
 main section:nth-of-type(1) div:nth-of-type(3) {
@@ -54,7 +81,83 @@ main section:nth-of-type(1) div:nth-of-type(3) {
   flex: 0.75;
 }
 
-/* hier komen de wolkjes */
+/* achtergrond kleuren van water */
+
+main section:nth-of-type(2) div:nth-of-type(1) {
+  background-color: var(--earth-sky-color);
+  flex: 1.75;
+}
+main section:nth-of-type(2) div:nth-of-type(2) {
+  background-color: var(--water-color-dark);
+  flex: 1.25;
+}
+
+/* water staat eerst op display none want hoef nog niet getoond te worden */
+main section:nth-of-type(2) {
+  display: none;
+}
+
+/* theme switcher */
+
+body:has(nav label:nth-of-type(2) input:checked) main section:nth-of-type(1) {
+  display: none;
+}
+
+body:has(nav label:nth-of-type(2) input:checked) main section:nth-of-type(2) {
+  display: flex;
+}
+
+/* styling van theme-switcher */
+
+nav {
+  display: flex;
+  background-color: #fff;
+  padding: 10px;
+  box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.15);
+  border-radius: 100px;
+  position: relative;
+  align-items: center;
+}
+
+nav input {
+  display: none;
+}
+
+nav label {
+  width: 100px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+}
+
+nav label:has(input:checked) {
+  color: var(--water-color-dark);
+}
+
+nav span[title="glider"] {
+  position: absolute;
+  height: 40px;
+  width: 100px;
+  background-color: #e6eef9;
+  z-index: 1;
+  border-radius: 99px;
+  transition: 0.25s ease-out;
+  left: 10px;
+}
+
+nav label:nth-of-type(1):has(input:checked) ~ span[title="glider"] {
+  transform: translateX(0);
+}
+nav label:nth-of-type(2):has(input:checked) ~ span[title="glider"] {
+  transform: translateX(100px);
+}
+
+/* wolkjes design */
+
 main section div:nth-of-type(1),
 main section div:nth-of-type(2) {
   position: relative;
@@ -77,10 +180,10 @@ section div:nth-of-type(1) ul li:nth-of-type(1) {
 }
 section div:nth-of-type(1) ul li:nth-of-type(2) {
   left: 45%;
-  top: 120px;
+  top: 75px;
 }
 section div:nth-of-type(1) ul li:nth-of-type(3) {
-  right: 15%;
+  right: 20%;
   top: 40px;
 }
 
@@ -109,98 +212,4 @@ section div:nth-of-type(1) button:nth-of-type(3) {
   top: 20px;
 }
 
-/* hier komt de struik  */
-
-section div:nth-of-type(2) ul li {
-  position: absolute;
-  bottom: 40px;
-  left: 20%;
-  width: 450px;
-  height: 200px;
-}
-
-section div:nth-of-type(2) button {
-  position: absolute;
-  background-color: var(--earth-grass-color-dark);
-  border: none;
-  border-radius: 50%;
-  bottom: 40px;
-}
-
-/* Linker bol */
-section div:nth-of-type(2) button:nth-of-type(1) {
-  width: 150px;
-  height: 150px;
-  left: 0;
-  z-index: 1;
-  background-color: #4a7c3f;
-}
-
-/* Middelste (grootste) bol */
-section div:nth-of-type(2) button:nth-of-type(2) {
-  width: 250px;
-  height: 220px;
-  left: 80px;
-  z-index: 2;
-  background-color: #5a9e50;
-}
-
-/* Rechter bol */
-section div:nth-of-type(2) button:nth-of-type(3) {
-  width: 150px;
-  height: 150px;
-  left: 280px;
-  z-index: 1;
-  background-color: #4a7c3f;
-}
-
-/* check theme swticher */
-
-/* Water achtegrond gedeelte */
-
-main section:nth-of-type(2) {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background-color: #403644;
-  display: none;
-}
-
-main section:nth-of-type(2) div:nth-of-type(1) {
-  background-color: var(--earth-sky-color);
-  flex: 1.25;
-}
-
-main section:nth-of-type(2) div:nth-of-type(2) {
-  background-color: var(--water-color-medium);
-  flex: 1;
-}
-
-input[type="radio"]:nth-of-type(2):checked ~ main section:nth-of-type(1) {
-  display: none;
-}
-input[type="radio"]:nth-of-type(2):checked ~ main section:nth-of-type(2) {
-  display: flex;
-}
-
-/* label gedeelte */
-
-header label {
-  cursor: pointer;
-  padding: 40px;
-  background-color: #2f7fd1;
-  color: white;
-}
-
-header {
-  height: 50px;
-  align-items: center;
-  display: flex;
-  gap: 20px;
-}
-
-input[type="radio"] {
-  display: none;
-}
-
-/* toch ff hier een comment toevoegen */
+/* struik design */

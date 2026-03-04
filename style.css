@@ -5,6 +5,7 @@
   --duck-color-body-light: #ffd894;
   --duck-color-beak: #ff5400;
   --duck-color-feet: #c94200;
+  --duck-color-feet-light: #e38b5f;
   --duck-color-eyes: #403644;
 
   /* ===== ACHTERGROND LAND ===== */
@@ -23,157 +24,102 @@
   --color-white: #ffffff;
 }
 
-h1 {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color: white;
-}
-
-header {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-}
-
 body {
-  min-height: 100vh;
-  display: flex;
+  background: lightblue;
+}
+
+section {
   flex-direction: column;
-  background-color: #4fb3ff;
+  align-items: flex-start;
+  width: fit-content;
+  margin: 100px auto;
 }
-
-main {
-  flex: 1; /* neemt resterende hoogte */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-main section {
-  background-color: white;
-  max-width: 800px;
-  width: 100%;
-  min-height: 800px;
-  border-radius: 20px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-main section div:nth-of-type(1) {
-  display: flex;
-  gap: 30px;
-}
-
-main section div:nth-of-type(1) {
+header {
   background-color: var(--duck-color-body);
-  width: 190px;
-  height: 190px;
-  border-radius: 100%;
-  position: relative;
-  top: 35px;
-  left: 60px;
-  z-index: 10; 
-
+  height: 150px;
+  width: 150px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 8px;
+  justify-self: end;
 }
 
-main section div:nth-of-type(2) type {
+header button {
+  width: 50px;
+  height: auto;
   border: none;
-  border-radius: none;
+  background-color: var(--duck-color-beak);
+  grid-column-start: 3;
+  grid-row-start: 3;
 }
 
-main section div:nth-of-type(2) {
-  background-color: var(--duck-color-body);
-  width: 400px;
-  height: 220px;
-  border-radius: 30% 60% 60% 60% / 60% 60% 60% 60%;
-  rotate: 3deg;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  z-index: +99;
-}
-
-section > div:nth-of-type(3) {
-  position: absolute;
-  top: 400px;
-  z-index: 20;
-  left: 280px;
-}
-
-section > div:nth-of-type(3) input[type="checkbox"] {
-  appearance: none;
-  -webkit-appearance: none;
+header span {
+  display: inline-block;
   width: 30px;
-  height: 30px;
-  border-radius: 50%;
+  height: 25px;
   background: white;
+  border-radius: 50%;
   position: relative;
-  margin: 0 10px;
-  cursor: pointer;
+  grid-column-start: 3;
+  grid-row-start: 1;
+  margin-top: 20px;
 }
 
-section > div:nth-of-type(3) input[type="checkbox"]::after {
+header span::after {
   content: "";
-  width: 18px;
-  height: 18px;
-  background-color: var(--duck-color-eyes);
-  border-radius: 20px;
   position: absolute;
+  width: 12px;
+  height: 12px;
+  background-color: var(--duck-color-eyes);
+  border-radius: 50%;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-
-
+  transform: translate(-20%, -65%);
 }
 
-main section ul {
+section main {
+  background-color: var(--duck-color-body);
+  height: 150px;
+  width: 300px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 8px;
+}
+
+footer {
   display: flex;
-  gap: 20px;
+  gap: 1em;
+  padding: 0;
+  margin: 0;
 }
 
-main section ul li {
-  list-style: none;
+footer > div {
   width: 15px;
   height: 60px;
   background-color: var(--duck-color-feet);
   border-radius: 10px;
+  margin: 10px auto;
   position: relative;
-  top: -35px;
 }
 
-main section ul li input {
-  display: flex;
-  justify-content: end;
-}
-
-section div:nth-of-type(4) {
+footer > div > div {
+  width: 12px;
+  height: 50px;
+  background-color: var(--duck-color-feet-light);
   position: absolute;
-  top: 450px;
-  left: 300px;
-  transform: rotate(15deg);
-  z-index: 5;
-
-}
-
-section div:nth-of-type(4) input {
-  background-color: var(--duck-color-beak);
-  display: flex;
-  flex-direction: column;
-  border: none;
+  top: 55px;
   border-radius: 10px;
-  width: 100px;
-  height: 20px;
 }
 
-section div:nth-of-type(4) input:nth-of-type(1) {
-  transform: rotate(-13deg);
-  position: relative;
-  top: 8px;
-}
-
-section div:nth-of-type(4) input:nth-of-type(2) {
-  transform: rotate(5deg);
+footer nav {
+  width: 40px;
+  height: 12px;
+  background: #d35400;
+  position: absolute;
+  bottom: -5px;
+  left: -10px;
+  border-radius: 50% 50% 2px 2px;
+  transform-origin: left center;
 }
