@@ -3,38 +3,136 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>The WaddleDuck</title>
   </head>
+  <link rel="stylesheet" href="style.css" />
   <body>
-    <section>
-      <!-- HOOFD -->
-      <header>
-        <span></span>
-        <!-- oog -->
-        <button></button>
-        <!-- snavel -->
-      </header>
-      <!-- LIJF -->
-      <main>
-        <!-- VLEUGEL -->
-        <article></article>
+    <header>
+      <h1>The WaddleDuck</h1>
+      <section>
+        <nav>
+          <label>
+            <input type="radio" name="theme-switcher" checked />
+            <span>On land</span>
+          </label>
 
-        <!-- STAART -->
-        <aside></aside>
-      </main>
+          <label>
+            <input type="radio" name="theme-switcher" />
+            <span>In water</span>
+          </label>
 
-      <!-- POOT -->
-      <footer>
+          <span title="glider"></span>
+        </nav>
+      </section>
+      <section>
         <div>
-          <!-- bovenbeen -->
           <div>
-            <!-- onderbeen -->
-            <nav></nav>
-            <!-- voet -->
+            <button title="Walk right">
+              <img src="images/arrow-right.svg" alt="" />
+            </button>
           </div>
+          <p>Press & hold to walk</p>
         </div>
-      </footer>
-    </section>
+      </section>
+    </header>
+    <main>
+      <!-- thema 1 vaste land -->
+      <section>
+        <!-- eerste section komen wolkjes -->
+        <div>
+          <!-- wolken staan uit -->
+          <!-- <ul>
+            <li>
+              <button></button>
+              <button></button>
+              <button></button>
+            </li>
+            <li>
+              <button></button>
+              <button></button>
+              <button></button>
+            </li>
+            <li>
+              <button></button>
+              <button></button>
+              <button></button>
+            </li>
+          </ul> -->
+        </div>
+        <div></div>
+        <div></div>
+      </section>
+
+      <!-- hier komt de water achtrgrond laag -->
+      <section>
+        <!-- ook hier komen de wolkjes -->
+        <div>
+          <!-- hier in zitten de water animaties -->
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div></div>
+      </section>
+      <!-- hier komt het eendje -->
+      <section>
+        <!-- HOOFD -->
+        <div>
+          <span></span>
+          <!-- oog -->
+          <button></button>
+          <!-- snavel -->
+        </div>
+        <!-- LIJF -->
+        <div>
+          <!-- VLEUGEL -->
+          <article></article>
+          <!-- STAART -->
+          <aside></aside>
+        </div>
+        <!-- BENEN -->
+        <div>
+          <!-- Benen -->
+          <ul>
+            <li></li>
+            <!-- bovenbeen -->
+            <li></li>
+            <!-- onderbeen -->
+            <li></li>
+            <!-- voet -->
+          </ul>
+          <ul>
+            <li></li>
+            <!-- bovenbeen -->
+            <li></li>
+            <!-- onderbeen -->
+            <li></li>
+            <!-- voet -->
+          </ul>
+        </div>
+      </section>
+    </main>
   </body>
+  <!-- hoeft niet perse java script er bij maar is leuk voor het idee -->
+  <!-- <script>
+    const walkRightBtn = document.querySelector('button[title="Walk right"]');
+    const walkSound = new Audio("sounds/onland-waddle-sound.mp4");
+    walkSound.loop = true;
+
+    walkRightBtn.addEventListener("mousedown", () => {
+      walkSound.currentTime = 0;
+      walkSound.play();
+    });
+
+    walkRightBtn.addEventListener("mouseup", () => {
+      walkSound.pause();
+      walkSound.currentTime = 0;
+    });
+
+    walkRightBtn.addEventListener("mouseleave", () => {
+      walkSound.pause();
+      walkSound.currentTime = 0;
+    });
+  </script> -->
 </html>

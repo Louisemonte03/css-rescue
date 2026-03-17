@@ -5,7 +5,7 @@
   --duck-color-body-light: #ffd894;
   --duck-color-beak: #ff5400;
   --duck-color-feet: #c94200;
-  --duck-color-feet-light: #e38b5f;
+  --duck-color-feet-light: #f49261;
   --duck-color-eyes: #403644;
 
   /* ===== ACHTERGROND LAND ===== */
@@ -22,104 +22,577 @@
   /* ===== algemeen ===== */
 
   --color-white: #ffffff;
+
+  /* ===== ACHTERGROND LAND ===== */
+  --earth-gradient: linear-gradient(180deg, #b7844e 34%, #a66a36 88%);
+  --sky-gradient: linear-gradient(180deg, #6fd0ef 23%, #b4e4ff 64%);
+  --water-gradient: linear-gradient(
+    180deg,
+    #5587a2 0%,
+    #4281ae 40%,
+    #9cc3ea 100%
+  );
+}
+
+* {
+  font-family: sans-serif;
 }
 
 body {
-  background: lightblue;
+  gap: 20px;
+  height: 100vh;
 }
 
-section {
-  flex-direction: column;
-  align-items: flex-start;
-  width: fit-content;
-  margin: 100px auto;
+/* hier moet nog de stijling van de eend komen in de main */
+
+/* stijling van de header */
+header h1 {
+  color: var(--water-color-dark);
 }
+
 header {
-  background-color: var(--duck-color-body);
-  height: 150px;
-  width: 150px;
+  padding: 20px 40px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: absolute;
+
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Key arrows */
+
+header section:nth-of-type(2) {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 8px;
-  justify-self: end;
+  grid-template-columns: repeat(3, max-content);
+  gap: 10px;
+  justify-items: center;
+  align-items: center;
 }
 
-header button {
+header section:nth-of-type(2) div button img {
   width: 50px;
-  height: auto;
-  border: none;
-  background-color: var(--duck-color-beak);
-  grid-column-start: 3;
-  grid-row-start: 3;
+  height: 50px;
+  transition: transform 0.4s ease;
+  cursor: pointer;
+}
+header section:nth-of-type(2) div button img:hover {
+  transform: scale(1.4);
 }
 
-header span {
-  display: inline-block;
+header section:nth-of-type(2) div button {
+  border: none;
+  background-color: transparent;
+}
+
+/* stijling van de theme switcher */
+
+nav {
+  display: flex;
+  background-color: #fff;
+  padding: 10px;
+  box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.15);
+  border-radius: 100px;
+  position: relative;
+  width: fit-content;
+}
+
+nav input {
+  display: none;
+}
+
+nav label {
+  width: 100px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+}
+
+nav label:has(input:checked) {
+  color: var(--water-color-dark);
+}
+
+nav span[title="glider"] {
+  position: absolute;
+  height: 40px;
+  width: 100px;
+  background-color: #e6eef9;
+  z-index: 1;
+  border-radius: 99px;
+  transition: 0.25s ease-out;
+  left: 10px;
+}
+
+nav label:nth-of-type(1):has(input:checked) ~ span[title="glider"] {
+  transform: translateX(0);
+}
+nav label:nth-of-type(2):has(input:checked) ~ span[title="glider"] {
+  transform: translateX(100px);
+}
+
+/* styling van het achtergrond */
+
+/* achtergrond kleuren van land */
+
+main {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  width: 100%;
+  height: 100vh;
+  border-radius: 20px;
+  position: relative;
+}
+
+main section:nth-of-type(1) {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}
+
+main section:nth-of-type(1) div:nth-of-type(1) {
+  background: var(--sky-gradient);
+  flex: 1.5;
+}
+
+main section:nth-of-type(1) div:nth-of-type(2) {
+  background-color: var(--earth-grass-color);
+  flex: 0.75;
+}
+
+main section:nth-of-type(1) div:nth-of-type(3) {
+  background: var(--earth-gradient);
+  flex: 0.75;
+}
+
+/* het wolkjes design van eerst background */
+main section:nth-of-type(1) div:nth-of-type(1),
+main section:nth-of-type(1) div:nth-of-type(2),
+main section:nth-of-type(1) div:nth-of-type(3) {
+  position: relative;
+  overflow: hidden;
+}
+
+main section:nth-of-type(1) div ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+main section:nth-of-type(1) ul li {
+  position: absolute;
+  /*  Bereidt beweging voor */
+  will-change: transform;
+}
+
+main section:nth-of-type(1) ul li:nth-of-type(1) {
+  left: 10%;
+  top: 50px;
+}
+main section:nth-of-type(1) ul li:nth-of-type(2) {
+  left: 45%;
+  top: 75px;
+}
+main section:nth-of-type(1) ul li:nth-of-type(3) {
+  right: 20%;
+  top: 40px;
+}
+
+main section:nth-of-type(1) button {
+  position: absolute;
+  background-color: var(--color-white);
+  border-radius: 50%;
+  border: none;
+  width: 120px;
+  height: 100px;
+}
+
+main section:nth-of-type(1) button:nth-of-type(1) {
+  left: -40px;
+  top: 20px;
+}
+main section:nth-of-type(1) button:nth-of-type(2) {
+  left: 0;
+  top: 0;
+  width: 140px;
+  height: 110px;
+  z-index: 2;
+}
+main section:nth-of-type(1) button:nth-of-type(3) {
+  left: 60px;
+  top: 20px;
+}
+
+/* .hier komt water */
+
+main section:nth-of-type(2) {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+  display: none;
+}
+
+main section:nth-of-type(2) > div:nth-of-type(1) {
+  background: var(--sky-gradient);
+  flex: 1;
+}
+
+main section:nth-of-type(2) > div:nth-of-type(2) {
+  background: var(--water-gradient);
+  flex: 1;
+}
+
+/* switch */
+
+body:has(nav label:nth-of-type(2) input:checked) main section:nth-of-type(1) {
+  display: none;
+}
+
+body:has(nav label:nth-of-type(2) input:checked) main section:nth-of-type(2) {
+  display: flex;
+}
+
+/* benen gaan weg als in water is */
+body:has(nav label:nth-of-type(2) input:checked)
+  main
+  section:nth-of-type(3)
+  > div:nth-of-type(3) {
+  display: none;
+}
+
+/*  positionering eend  */
+main section:nth-of-type(3) {
+  position: absolute;
+  z-index: 10;
+  top: 320px;
+  left: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+/*  HOOFD (De eerste div)  */
+
+main section:nth-of-type(3) > div:nth-of-type(1) {
+  background-color: var(--duck-color-body);
+  height: 100px;
+  width: 110px;
+  border-radius: 5px;
+  position: relative;
+  box-shadow: inset 0 -10px 0 var(--duck-color-body-dark);
+}
+
+/* hier komt de oog van de eend */
+
+main section:nth-of-type(3) > div:nth-of-type(1) span {
+  position: absolute;
+  top: 20px;
+  right: 20px;
   width: 30px;
   height: 25px;
-  background: white;
+  background: var(--color-white);
   border-radius: 50%;
-  position: relative;
-  grid-column-start: 3;
-  grid-row-start: 1;
-  margin-top: 20px;
 }
 
-header span::after {
+/* hier komt de pupil van de eend */
+
+main section:nth-of-type(3) > div:nth-of-type(1) span::after {
   content: "";
   position: absolute;
   width: 12px;
   height: 12px;
   background-color: var(--duck-color-eyes);
-  border-radius: 50%;
+  border-radius: 100%;
   top: 50%;
-  left: 50%;
-  transform: translate(-20%, -65%);
+  left: 60%;
+  transform: translate(-50%, -50%);
 }
 
-section main {
-  background-color: var(--duck-color-body);
-  height: 150px;
-  width: 300px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 8px;
-}
+/* hier komt de snavel van de eend */
 
-footer {
-  display: flex;
-  gap: 1em;
-  padding: 0;
-  margin: 0;
-}
-
-footer > div {
-  width: 15px;
-  height: 60px;
-  background-color: var(--duck-color-feet);
-  border-radius: 10px;
-  margin: 10px auto;
-  position: relative;
-}
-
-footer > div > div {
-  width: 12px;
-  height: 50px;
-  background-color: var(--duck-color-feet-light);
+main section:nth-of-type(3) > div:nth-of-type(1) button {
   position: absolute;
+  right: -25px;
   top: 55px;
-  border-radius: 10px;
+  width: 45px;
+  height: 12px;
+  border: none;
+  background-color: var(--duck-color-beak);
+  border-radius: 2px 5px 5px 2px;
 }
 
-footer nav {
-  width: 40px;
-  height: 12px;
-  background: #d35400;
-  position: absolute;
-  bottom: -5px;
-  left: -10px;
-  border-radius: 50% 50% 2px 2px;
-  transform-origin: left center;
+/* Hier komt het onderlijf   */
+main section:nth-of-type(3) > div:nth-of-type(2) {
+  background-color: var(--duck-color-body);
+  height: 130px;
+  width: 230px;
+  border-radius: 0px 0px 40px 10px;
+  position: relative;
+  background-color: var(--duck-color-body);
+  box-shadow: inset 0 -10px 0 var(--duck-color-body-dark);
 }
+
+/* hier komt de vleugel */
+
+main section:nth-of-type(3) > div:nth-of-type(2) article {
+  position: absolute;
+  width: 100px;
+  height: 50px;
+  background-color: var(--duck-color-body-light);
+  border-radius: 0 0 50px 50px;
+  top: 30px;
+  left: 50px;
+}
+
+/* hier komt de staart van de eend  */
+
+main section:nth-of-type(3) > div:nth-of-type(2) aside {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-color: var(--duck-color-body);
+  left: -15px;
+  border-radius: 5px;
+  top: 0;
+
+  /* clipart van de side */
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+}
+
+/* hier komen de benen */
+
+main section:nth-of-type(3) > div:nth-of-type(3) {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding-right: 20px;
+}
+
+/* elementen van de li en ul gaan weg */
+main section:nth-of-type(3) > div:nth-of-type(3) ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* stijling van de poten */
+main section:nth-of-type(3) div:nth-of-type(3) li {
+  width: 8px;
+  height: 30px;
+  margin-bottom: 5px;
+}
+
+/* hjier bovenbeen */
+main section:nth-of-type(3) div:nth-of-type(3) li:nth-of-type(1) {
+  background-color: var(--duck-color-feet);
+}
+
+/* Onderbeen */
+main section:nth-of-type(3) div:nth-of-type(3) li:nth-of-type(2) {
+  background-color: var(--duck-color-feet-light);
+}
+
+/* voet */
+main section:nth-of-type(3) div:nth-of-type(3) li:nth-of-type(3) {
+  background-color: var(--duck-color-feet);
+  width: 30px;
+  height: 8px;
+  border-radius: 0 5px 5px 0;
+  margin-left: 20px;
+}
+
+/* Hier komt de silly walk animation */
+
+/* door dit stukje code blijft de boven kant op de poot staan  */
+main section:nth-of-type(3) > div:nth-of-type(3) ul {
+  transform-origin: top center;
+}
+
+body:has(button[title="Walk right"]:active)
+  main
+  section:nth-of-type(3)
+  > div:nth-of-type(3)
+  ul:nth-of-type(1) {
+  animation: been-voor 0.5s ease-in-out infinite;
+}
+
+body:has(button[title="Walk right"]:active)
+  main
+  section:nth-of-type(3)
+  > div:nth-of-type(3)
+  ul:nth-of-type(2) {
+  animation: been-voor 0.5s ease-in-out infinite 0.25s;
+}
+
+@keyframes been-voor {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-30deg);
+  } /* been schopt naar voren */
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(25deg);
+  } /* been zwaait naar achteren */
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes wolken-beweging {
+  0% {
+    transform: translateX(0); /* Begin op de plek waar ze nu staan */
+  }
+  100% {
+    /* Ze vliegen naar links. -150vw zorgt dat ze altijd het scherm verlaten */
+    transform: translateX(-150vw);
+  }
+}
+
+/* wolken */
+
+body:has(button[title="Walk right"]:active) main section:nth-of-type(1) ul li {
+  animation: wolken-beweging 20s linear infinite;
+}
+
+/* beweging van het onderlichaam */
+
+body:has(button[title="Walk right"]:active)
+  main
+  section:nth-of-type(3)
+  > div:nth-of-type(1) {
+  animation:
+    walk-left 0.35s steps(1) infinite,
+    hop-body 0.35s ease-in-out infinite;
+}
+
+/* beweging van het hoofdje */
+body:has(button[title="Walk right"]:active)
+  main
+  section:nth-of-type(3)
+  > div:nth-of-type(2) {
+  animation:
+    walk-left 0.35s steps(1) infinite,
+    hop-body 0.35s ease-in-out infinite;
+}
+
+/* hier komt de hop body */
+
+@keyframes hop-body {
+  0% {
+    margin-top: 0px;
+  }
+  25% {
+    margin-top: -18px;
+  }
+  50% {
+    margin-top: 0px;
+  }
+  75% {
+    margin-top: -12px;
+  }
+  100% {
+    margin-top: 0px;
+  }
+}
+
+/* bewging van vleugel*/
+
+body:has(button[title="Walk right"]:active) main div:nth-of-type(2) article {
+  animation: wing-flap 0.7s steps(5) infinite;
+}
+
+@keyframes wing-flap {
+  0% {
+    transform: rotate(0deg) scaleY(1);
+  }
+  30% {
+    transform: rotate(-15deg) scaleY(0.6);
+  }
+  60% {
+    transform: rotate(8deg) scaleY(1.1);
+  }
+  100% {
+    transform: rotate(0deg) scaleY(1);
+  }
+}
+
+/* water ripple */
+
+/* Alle drie tegelijk */
+main > section:nth-of-type(2) > div:first-child > div {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  animation: ripple 3s ease-in-out infinite;
+}
+
+/* Eerste ripple */
+main > section:nth-of-type(2) > div:first-child > div:nth-child(1) {
+  width: 80px;
+  height: 20px;
+  top: 80%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+/* Tweede ripple */
+main > section:nth-of-type(2) > div:first-child > div:nth-child(2) {
+  width: 120px;
+  height: 25px;
+  top: 70%;
+  left: 60%;
+  animation-delay: 1s;
+}
+
+/* Derde ripple */
+main > section:nth-of-type(2) > div:first-child > div:nth-child(3) {
+  width: 60px;
+  height: 15px;
+  top: 70%;
+  left: 35%;
+  animation-delay: 2s;
+}
+
+/* 4e ripple */
+main > section:nth-of-type(2) > div:first-child > div:nth-child(4) {
+  width: 60px;
+  height: 15px;
+  top: 60%;
+  left: 85%;
+  animation-delay: 2s;
+}
+@keyframes ripple {
+  0%,
+  100% {
+    transform: scaleX(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scaleX(1.3);
+    opacity: 0.6;
+  }
+}
+
+/*  */
