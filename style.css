@@ -8,12 +8,6 @@
   --duck-color-feet-light: #f49261;
   --duck-color-eyes: #403644;
 
-  /* ===== ACHTERGROND LAND ===== */
-  --earth-land-color: #a47148;
-  --earth-sky-color: #bfe4ff;
-  --earth-grass-color: #6bbf59;
-  --earth-grass-color-dark: #60832e;
-
   /* ===== ACHTERGROND WATER ===== */
   --water-color-medium: #4fb3ff;
   --water-color-light: #bfe4ff;
@@ -31,6 +25,12 @@
     #5587a2 0%,
     #4281ae 40%,
     #9cc3ea 100%
+  );
+  --grass-gradient: linear-gradient(
+    180deg,
+    #a8d868 0%,
+    #4a9e2a 55%,
+    #2a6010 100%
   );
 }
 
@@ -165,12 +165,12 @@ main section:nth-of-type(1) {
 
 main section:nth-of-type(1) div:nth-of-type(1) {
   background: var(--sky-gradient);
-  flex: 1.5;
+  flex: 1.75;
 }
 
 main section:nth-of-type(1) div:nth-of-type(2) {
-  background-color: var(--earth-grass-color);
-  flex: 0.75;
+  background: var(--grass-gradient);
+  flex: 0.5;
 }
 
 main section:nth-of-type(1) div:nth-of-type(3) {
@@ -249,7 +249,7 @@ main section:nth-of-type(2) {
 
 main section:nth-of-type(2) > div:nth-of-type(1) {
   background: var(--sky-gradient);
-  flex: 1;
+  flex: 1.5;
 }
 
 main section:nth-of-type(2) > div:nth-of-type(2) {
@@ -279,8 +279,8 @@ body:has(nav label:nth-of-type(2) input:checked)
 main section:nth-of-type(3) {
   position: absolute;
   z-index: 10;
-  top: 320px;
-  left: 400px;
+  top: 500px;
+  left: 350px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -595,4 +595,11 @@ main > section:nth-of-type(2) > div:first-child > div:nth-child(4) {
   }
 }
 
-/*  */
+/* hoofd laten bewegen in de lucht */
+
+body:has(button[title="Walk up"]:active)
+  main
+  section:nth-of-type(3)
+  > div:nth-of-type(1) {
+  background-color: #a8d868;
+}
