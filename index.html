@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The WaddleDuck</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
-  <link rel="stylesheet" href="style.css" />
   <body>
     <header>
       <h1>The WaddleDuck</h1>
@@ -27,116 +27,82 @@
       <section>
         <div>
           <div>
-            <button title="Walk up">
-              <img src="images/arrow-up.svg" alt="" />
-            </button>
-            <button title="Walk right">
-              <img src="images/arrow-right.svg" alt="" />
-            </button>
+            <input type="radio" name="start" />
+            <label>
+              <button title="Start">
+                <img src="images/arrow-right.svg" alt="" />
+              </button>
+            </label>
           </div>
           <p>Press & hold to walk</p>
         </div>
       </section>
     </header>
-    <main>
-      <!-- thema 1 vaste land -->
-      <section>
-        <!-- eerste section komen wolkjes -->
-        <div>
-          <!-- wolken staan uit -->
-          <!-- <ul>
-            <li>
-              <button></button>
-              <button></button>
-              <button></button>
-            </li>
-            <li>
-              <button></button>
-              <button></button>
-              <button></button>
-            </li>
-            <li>
-              <button></button>
-              <button></button>
-              <button></button>
-            </li>
-          </ul> -->
-        </div>
-        <div></div>
-        <div></div>
-      </section>
 
-      <!-- hier komt de water achtrgrond laag -->
+    <main>
+      <!-- ON EARTH -->
       <section>
-        <!-- ook hier komen de wolkjes -->
-        <div>
-          <!-- hier in zitten de water animaties -->
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-        <div></div>
-      </section>
-      <!-- hier komt het eendje -->
-      <section>
-        <!-- HOOFD -->
+        <!-- CLOUDS IN FIRST DIV -->
         <div>
           <span></span>
-          <!-- oog -->
-          <button></button>
-          <!-- snavel -->
+          <span></span>
+          <span></span>
         </div>
-        <!-- LIJF -->
+        <div></div>
+        <div></div>
+      </section>
+      <!-- IN THE WATER -->
+      <section>
+        <!-- COUDS IN THE FIRST DIV -->
         <div>
-          <!-- VLEUGEL -->
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <!-- RIPPLES -->
+        <div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </section>
+      <!-- THE DUCK -->
+      <section>
+        <!-- HEAD -->
+        <div>
+          <span></span>
+          <!-- EYE -->
+          <button></button>
+          <!-- BEAK -->
+        </div>
+        <!-- BODY -->
+        <div>
+          <!-- WING -->
           <article></article>
-          <!-- STAART -->
+          <!-- TAIL -->
           <aside></aside>
         </div>
-        <!-- BENEN -->
+        <!-- LEGS -->
         <div>
-          <!-- Benen -->
           <ul>
             <li></li>
-            <!-- bovenbeen -->
+            <!-- UPPERLEG -->
             <li></li>
-            <!-- onderbeen -->
+            <!-- LOWERLEG -->
             <li></li>
-            <!-- voet -->
+            <!-- FEET -->
           </ul>
           <ul>
             <li></li>
-            <!-- bovenbeen -->
+            <!-- UPPERLEG -->
             <li></li>
-            <!-- onderbeen -->
+            <!-- LOWERLEG -->
             <li></li>
-            <!-- voet -->
+            <!-- FEET -->
           </ul>
         </div>
       </section>
     </main>
   </body>
-
-  <!-- hoeft niet perse java script er bij maar is leuk voor het idee -->
-  <!-- <script>
-    const walkRightBtn = document.querySelector('button[title="Walk right"]');
-    const walkSound = new Audio("sounds/onland-waddle-sound.mp4");
-    walkSound.loop = true;
-
-    walkRightBtn.addEventListener("mousedown", () => {
-      walkSound.currentTime = 0;
-      walkSound.play();
-    });
-
-    walkRightBtn.addEventListener("mouseup", () => {
-      walkSound.pause();
-      walkSound.currentTime = 0;
-    });
-
-    walkRightBtn.addEventListener("mouseleave", () => {
-      walkSound.pause();
-      walkSound.currentTime = 0;
-    });
-  </script> -->
 </html>
