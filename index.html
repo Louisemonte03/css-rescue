@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apple TV Afstandsbediening</title>
+    <link rel="icon" href="images/logo apple.png" type="image/png" />
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1><span>Apple TV</span><span>Afstandsbediening</span></h1>
+    </header>
+    <main>
+      <!-- Paginastaat: alle inputs hier zodat ze overal via :has() bereikbaar zijn -->
+      <input type="radio" name="scherm" id="thuis" checked />
+
+      <!-- Tv scherm -->
+      <section aria-label="Apple TV scherm">
+        <!-- Profiel + tijd rechtsboven -->
+        <div>
+          <time datetime="09:41">9:41</time>
+          <img src="images/memoji.png" alt="Profiel" />
+        </div>
+
+        <!-- App rijen onderaan -->
+        <ul>
+          <li>
+            <input type="radio" name="app" id="app-1" checked /><label
+              for="app-1"
+              ><img src="images/appletv.svg" alt="Apple TV"
+            /></label>
+          </li>
+          <li>
+            <input type="radio" name="app" id="app-2" /><label for="app-2"
+              ><img src="images/facetime.svg" alt="FaceTime"
+            /></label>
+          </li>
+          <li>
+            <input type="radio" name="app" id="app-3" /><label for="app-3"
+              ><img src="images/appstore.svg" alt="App Store"
+            /></label>
+          </li>
+          <li>
+            <input type="radio" name="app" id="app-4" />
+            <input type="radio" name="scherm" id="arcade-app" />
+            <label for="app-4"
+              ><img src="images/arcade.svg" alt="Arcade"
+            /></label>
+          </li>
+          <li>
+            <input type="radio" name="app" id="app-5" />
+            <input type="radio" name="scherm" id="muziek-app" />
+            <label for="app-5"
+              ><img src="images/music.svg" alt="Muziek"
+            /></label>
+          </li>
+          <li>
+            <input type="radio" name="app" id="app-6" />
+            <input type="radio" name="scherm" id="netflix-app" />
+            <label for="app-6"
+              ><img src="images/netflix.svg" alt="Netflix"
+            /></label>
+          </li>
+        </ul>
+
+        <!-- Netflix-app scherm -->
+        <article>
+          <p>Netflix</p>
+          <video autoplay loop muted playsinline>
+            <source src="videos/netflix-intro.mp4" type="video/mp4" />
+          </video>
+        </article>
+
+        <article>
+          <p>Arcade</p>
+          <video autoplay loop muted playsinline>
+            <source src="videos/Apple Arcade intro.mp4" type="video/mp4" />
+          </video>
+        </article>
+
+        <!-- Muziek-app scherm -->
+        <article>
+          <figure>
+            <img
+              src="images/asitwas-album-cover.png"
+              alt="Album art As It Was"
+            />
+          </figure>
+          <div>
+            <p>As It Was</p>
+            <span>Harry Styles · Harry's House</span>
+          </div>
+          <nav aria-label="Muziekbediening">
+            <button type="button" aria-label="Vorige">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M6 6h2v12H6zm3.5 6 8.5 6V6z" />
+              </svg>
+            </button>
+            <button type="button" aria-label="Pauzeren">
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+              </svg>
+            </button>
+            <button type="button" aria-label="Volgende">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="m6 18 8.5-6L6 6v12zM16 6v12h2V6h-2z" />
+              </svg>
+            </button>
+          </nav>
+        </article>
+      </section>
+
+      <!-- Afstandbediening -->
+      <section aria-label="Afstandsbediening">
+        <!-- Aan/Uit knop rechtsboven -->
+        <div aria-label="Aan/Uit">
+          <label aria-hidden="true"
+            ><input type="radio" name="aan-uit" value="uit"
+          /></label>
+          <label aria-hidden="true"
+            ><input type="radio" name="aan-uit" value="aan" checked
+          /></label>
+          <svg
+            width="25"
+            height="25"
+            viewBox="0 0 800 800"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path
+              d="M400.577 224V400.472M525.325 275.765C550.003 300.447 566.808 331.892 573.613 366.122C580.418 400.354 576.92 435.833 563.559 468.076C550.199 500.317 527.576 527.876 498.552 547.265C469.527 566.653 435.406 577 400.5 577C365.594 577 331.472 566.653 302.448 547.265C273.424 527.876 250.801 500.317 237.441 468.076C224.08 435.833 220.582 400.354 227.387 366.122C234.193 331.892 250.997 300.447 275.675 275.765"
+              stroke="currentColor"
+              stroke-width="33"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+
+        <!-- trackpad klik gedeelte  -->
+        <section aria-label="Trackpad">
+          <span aria-hidden="true"></span>
+          <span aria-label="Links">
+            <label for="app-1" aria-hidden="true"></label>
+            <label for="app-2" aria-hidden="true"></label>
+            <label for="app-3" aria-hidden="true"></label>
+            <label for="app-4" aria-hidden="true"></label>
+            <label for="app-5" aria-hidden="true"></label>
+          </span>
+          <button type="button" aria-label="Selecteer">
+            <label for="arcade-app" aria-hidden="true"></label>
+            <label for="muziek-app" aria-hidden="true"></label>
+            <label for="netflix-app" aria-hidden="true"></label>
+          </button>
+          <span aria-label="Rechts">
+            <label for="app-2" aria-hidden="true"></label>
+            <label for="app-3" aria-hidden="true"></label>
+            <label for="app-4" aria-hidden="true"></label>
+            <label for="app-5" aria-hidden="true"></label>
+            <label for="app-6" aria-hidden="true"></label>
+          </span>
+          <span aria-hidden="true"></span>
+        </section>
+
+        <!-- SVG iconen afkomstig van https://www.svgrepo.com -->
+        <!-- Bedieningsknoppen van de remote -->
+        <nav aria-label="Remotebediening">
+          <button type="button" aria-label="Terug">
+            <label for="thuis" aria-hidden="true"></label>
+            <svg
+              width="40"
+              height="40"
+              viewBox="0 0 800 800"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M483.667 566.333L317 399.667L483.667 233"
+                stroke="white"
+                stroke-width="33.3333"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+          <button type="button" aria-label="Menu">
+            <svg
+              width="40"
+              height="40"
+              viewBox="0 0 800 800"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M183 278.308C183 248.314 207.314 224 237.308 224H563.154C593.148 224 617.461 248.314 617.461 278.308V468.385C617.461 498.379 593.148 522.692 563.154 522.692H237.308C207.314 522.692 183 498.379 183 468.385V278.308ZM237.308 251.154C222.311 251.154 210.154 263.311 210.154 278.308V468.385C210.154 483.382 222.311 495.538 237.308 495.538H563.154C578.151 495.538 590.308 483.382 590.308 468.385V278.308C590.308 263.311 578.151 251.154 563.154 251.154H237.308Z"
+                fill="white"
+              />
+              <path
+                d="M264.461 563.423C264.461 555.926 270.54 549.846 278.038 549.846H522.423C529.92 549.846 536 555.926 536 563.423C536 570.92 529.92 577 522.423 577H278.038C270.54 577 264.461 570.92 264.461 563.423Z"
+                fill="white"
+              />
+            </svg>
+          </button>
+          <button type="button" aria-label="Afspelen/Pauzeren">
+            <svg
+              width="40"
+              height="40"
+              viewBox="0 0 800 800"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M459.333 263V538M577 263V538M224 306.334V494.666C224 514.421 224 524.297 227.9 528.87C231.284 532.84 236.36 534.946 241.554 534.535C247.541 534.064 254.514 527.081 268.459 513.112L362.474 418.945C368.92 412.488 372.142 409.261 373.35 405.538C374.411 402.264 374.411 398.736 373.35 395.462C372.142 391.739 368.92 388.512 362.474 382.055L268.459 287.888C254.514 273.92 247.541 266.936 241.554 266.464C236.36 266.055 231.284 268.161 227.9 272.129C224 276.703 224 286.58 224 306.334Z"
+                stroke="white"
+                stroke-width="33"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+          <button type="button" aria-label="Dempen">
+            <svg
+              width="40"
+              height="40"
+              viewBox="0 0 800 800"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M467.385 574.639C460.301 574.639 450.856 572.278 446.134 567.555L330.435 473.107C328.074 470.746 325.712 468.385 325.712 463.662V338.519C325.712 333.796 328.074 331.435 330.435 329.074L446.134 234.626C453.217 229.903 460.301 227.542 467.385 227.542C486.274 227.542 502.803 244.07 502.803 262.96V541.582C502.803 558.111 486.274 574.639 467.385 574.639ZM346.963 456.579L457.94 548.666C465.023 553.388 476.829 551.027 476.829 539.221V260.599C476.829 248.793 465.023 246.432 457.94 251.154L346.963 343.241V456.579Z"
+                fill="white"
+              />
+              <path
+                d="M335.157 475.468H264.321C257.237 475.468 252.515 470.746 252.515 463.662V338.518C252.515 331.435 257.237 326.712 264.321 326.712H335.157V475.468ZM276.127 451.856H323.351V350.324H276.127V451.856Z"
+                fill="white"
+              />
+              <path
+                d="M490.997 414.077H514.609C521.692 414.077 526.415 409.354 526.415 402.271V395.187C526.415 388.103 521.692 383.381 514.609 383.381H490.997V359.769H514.609C533.498 359.769 550.027 376.297 550.027 395.187V402.271C550.027 421.16 533.498 437.689 514.609 437.689H490.997V414.077Z"
+                fill="white"
+              />
+              <path
+                d="M566.555 577C564.194 577 559.472 577 557.11 574.639L226.542 244.07C221.819 239.348 221.819 232.264 226.542 227.542C231.264 222.819 238.348 222.819 243.07 227.542L573.639 558.11C578.361 562.833 578.361 569.916 573.639 574.639C573.639 577 568.916 577 566.555 577Z"
+                fill="white"
+              />
+            </svg>
+          </button>
+          <span>
+            <button type="button" aria-label="Volume omhoog">
+              <svg
+                width="40"
+                height="40"
+                viewBox="0 0 800 800"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  d="M224 400.5H577M400.5 224V577"
+                  stroke="white"
+                  stroke-width="33.33"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+            <button type="button" aria-label="Volume omlaag">
+              <svg
+                width="40"
+                height="40"
+                viewBox="0 0 800 800"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  d="M224 400H577"
+                  stroke="white"
+                  stroke-width="33"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </span>
+        </nav>
+      </section>
+    </main>
+    <!-- Klik geluid via Web Audio API — https://developer.mozilla.org/en-US/docs/Web/API/AudioContext -->
+    <script>
+      const ctx = new AudioContext();
+
+      function playClick() {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.frequency.value = 900;
+        gain.gain.setValueAtTime(0.2, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.06);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.06);
+      }
+
+      document.querySelectorAll("label").forEach((label) => {
+        label.addEventListener("click", playClick);
+      });
+    </script>
+  </body>
+</html>

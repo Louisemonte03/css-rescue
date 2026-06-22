@@ -1,0 +1,832 @@
+/* Laagvolgorde: van laagste naar hoogste prioriteit */
+@layer basis, layout, remote, scherm, muziek, interactie, animaties;
+
+@layer basis {
+  :root {
+    --kleur-achtergrond: #ffffff;
+
+    /* ── Tekst ── */
+    --kleur-tekst: #363639;
+    --kleur-tekst-dimmer: #727276;
+
+    /* Apple tv */
+    --kleur-scherm: #141416;
+    --kleur-scherm-rand: #2a2a2e;
+
+    /* remote */
+    --kleur-remote: #c7c7c7;
+    --kleur-remote-knop: #2d2d2d;
+    --kleur-remote-knop-actief: #0e0e0e;
+    --kleur-remote-rand: #171717;
+
+    /* overig */
+    --kleur-wit: #ffffff;
+    --kleur-accent: #ff9f0a;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --kleur-achtergrond: #0d0d0f;
+
+      --kleur-tekst: #f5f5f7;
+      --kleur-tekst-dimmer: #8e8e93;
+
+      --kleur-remote: #1c1c1e;
+      --kleur-remote-knop: #2c2c2e;
+      --kleur-remote-knop-actief: #0a84ff;
+    }
+  }
+
+  * {
+    box-sizing: border-box;
+    font-family: -apple-system, "SF Pro Text", system-ui, sans-serif;
+  }
+
+  header h1 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--kleur-tekst);
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    animation:
+      schaduw-dans 3s ease-in-out infinite,
+      golf 3s ease-in-out infinite;
+  }
+
+  header h1 span:last-of-type {
+    font-size: 0.45em;
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    color: var(--kleur-tekst-dimmer);
+    animation: wave 3s ease-in-out infinite 0.4s;
+  }
+
+  body {
+    background-color: var(--kleur-achtergrond);
+    display: grid;
+    grid-template-rows: auto 1fr;
+    height: 100dvh;
+    overflow: hidden;
+  }
+}
+
+@layer layout {
+  main {
+    display: grid;
+    grid-template-columns: 1fr 20rem;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+    height: 100%;
+  }
+
+  main > section:first-of-type {
+    height: 100%;
+  }
+
+  main > section:last-of-type {
+    background: linear-gradient(
+      180deg,
+      #e3e3e6 5.45%,
+      #cfcfd1 37.35%,
+      #88888c 105.45%
+    );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 60%;
+    border-radius: 2rem;
+  }
+}
+
+/* vormgeving van scherm  */
+@layer scherm {
+  main > section:first-of-type {
+    background: url("../images/achtergrond-apple-tv.jpg") center / cover
+      no-repeat;
+    /* border-radius: 1rem; */
+    border: 4px solid var(--kleur-scherm-rand);
+    place-self: center;
+    display: flex;
+    position: relative;
+    width: min(900px, 100%);
+    height: auto;
+    aspect-ratio: 16 / 9;
+    padding: 1.25rem;
+
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+
+    /* Profiel + tijd */
+    & > div:first-of-type {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      /* Glassmorphism: backdrop-filter techniek — https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter */
+      background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.04) 50%,
+        rgba(255, 255, 255, 0.08) 100%
+      );
+      backdrop-filter: blur(16px) brightness(1.1) contrast(1.05) saturate(140%);
+      -webkit-backdrop-filter: blur(16px) brightness(1.1) contrast(1.05)
+        saturate(140%);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow:
+        0 4px 24px rgba(0, 0, 0, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+      border-radius: 2rem;
+      padding: 0.3rem 1.25rem 0.3rem 1rem;
+
+      & > time {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--kleur-scherm);
+      }
+
+      & > img {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        object-fit: cover;
+        background: var(--kleur-accent);
+        border: 2px solid var(--kleur-accent);
+      }
+    }
+
+    & > ul {
+      position: absolute;
+      bottom: 1rem;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      list-style: none;
+      margin: 0 1.2rem;
+      padding: 1rem 0;
+
+      /* Glassmorphism: backdrop-filter techniek — https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter */
+      background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.04) 50%,
+        rgba(255, 255, 255, 0.08) 100%
+      );
+      backdrop-filter: blur(16px) brightness(1.1) contrast(1.05) saturate(140%);
+      -webkit-backdrop-filter: blur(16px) brightness(1.1) contrast(1.05)
+        saturate(140%);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow:
+        0 4px 24px rgba(0, 0, 0, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+      border-radius: 2rem;
+    }
+  }
+
+  main > section:first-of-type ul li label {
+    cursor: pointer;
+  }
+
+  main > section:first-of-type ul li img {
+    display: block;
+    width: 120px;
+    border-radius: 0.9rem;
+  }
+}
+
+@layer remote {
+  /* Vormgeving van de remote */
+
+  main > section:last-of-type {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    & > [aria-label="Aan/Uit"] {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      height: 40px;
+      width: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+      border: solid 1px var(--kleur-remote-knop);
+      border-radius: 50%;
+      cursor: pointer;
+      transition:
+        transform 0.1s ease,
+        background-color 0.1s ease;
+
+      &:active {
+        transform: scale(0.88);
+        background-color: var(--kleur-remote-knop-actief);
+      }
+
+      & > label {
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+      }
+    }
+
+    /* TV aan → toon label voor power-uit */
+    :has([name="aan-uit"][value="aan"]:checked)
+      &
+      > [aria-label="Aan/Uit"]
+      > label:first-of-type {
+      display: block;
+    }
+
+    /* TV uit → toon label voor power-aan */
+    :has([name="aan-uit"][value="uit"]:checked)
+      &
+      > [aria-label="Aan/Uit"]
+      > label:last-of-type {
+      display: block;
+    }
+
+    & > section {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 0.5rem;
+      height: 170px;
+      width: 170px;
+      background-color: var(--kleur-remote-knop);
+      border-radius: 50%;
+      place-self: center;
+
+      & > button {
+        place-self: center;
+        border: none;
+        border-radius: 50%;
+        padding: 0;
+        width: 5px;
+        height: 5px;
+        aspect-ratio: 1;
+        background-color: var(--kleur-wit);
+        position: relative;
+      }
+
+      & > :first-child {
+        grid-column: 2;
+        grid-row: 1;
+        place-self: center;
+        position: relative;
+        width: 5px;
+        height: 5px;
+        background-color: var(--kleur-wit);
+        border-radius: 50%;
+      }
+      & > [aria-label="Links"] {
+        grid-column: 1;
+        grid-row: 2;
+        place-self: center;
+        position: relative;
+        width: 5px;
+        height: 5px;
+        background-color: var(--kleur-wit);
+        border-radius: 50%;
+        transition: transform 0.1s ease;
+
+        &:active {
+          transform: scale(0.7);
+        }
+      }
+      & > [aria-label="Selecteer"] {
+        grid-column: 2;
+        grid-row: 2;
+        width: 110px;
+        height: 110px;
+        background-color: var(--kleur-remote-knop);
+        border: solid 1px var(--kleur-remote-rand);
+        position: relative;
+        transition:
+          transform 0.1s ease,
+          background-color 0.1s ease;
+
+        &:active {
+          transform: scale(0.92);
+          background-color: var(--kleur-remote-knop-actief);
+          box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.6);
+        }
+      }
+      & > [aria-label="Rechts"] {
+        grid-column: 3;
+        grid-row: 2;
+        place-self: center;
+        position: relative;
+        width: 5px;
+        height: 5px;
+        background-color: var(--kleur-wit);
+        border-radius: 50%;
+        transition: transform 0.1s ease;
+
+        &:active {
+          transform: scale(0.7);
+        }
+      }
+      & > :last-child {
+        grid-column: 2;
+        grid-row: 3;
+        place-self: center;
+        position: relative;
+        width: 5px;
+        height: 5px;
+        background-color: var(--kleur-wit);
+        border-radius: 50%;
+      }
+
+      & > [aria-label="Links"] label,
+      & > [aria-label="Rechts"] label,
+      & > [aria-label="Omhoog"] label,
+      & > [aria-label="Omlaag"] label {
+        display: none;
+        position: absolute;
+        inset: -20px;
+        border-radius: 50%;
+        background-color: transparent;
+        cursor: pointer;
+      }
+    }
+  }
+  main > section:last-of-type {
+    & > nav {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 0.5rem;
+      width: 175px;
+      height: 260px;
+
+      & > button {
+        place-self: center;
+        width: 70px;
+        height: 70px;
+        background-color: var(--kleur-remote-knop);
+        border-radius: 50%;
+        border: none;
+        transition:
+          transform 0.1s ease,
+          box-shadow 0.1s ease,
+          background-color 0.1s ease;
+
+        &:active {
+          transform: scale(0.88);
+          background-color: var(--kleur-remote-knop-actief);
+          box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.5);
+        }
+      }
+      & > span {
+        grid-column: 2;
+        grid-row: 2 / span 2;
+        place-self: center;
+        width: 70px;
+        height: 160px;
+        background-color: var(--kleur-remote-knop);
+        border-radius: 999px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+        & > button {
+          background: transparent;
+          border: none;
+          width: 100%;
+          height: 50%;
+        }
+      }
+    }
+  }
+}
+
+@layer interactie {
+  input[type="radio"],
+  input[type="checkbox"] {
+    display: none;
+  }
+
+  /* Selecteer-knop: alle labels standaard verborgen */
+  [aria-label="Selecteer"] > label {
+    display: none;
+  }
+
+  /* App-5 = muziek, app-6 = netflix */
+  :has(#app-4:checked) [aria-label="Selecteer"] > label[for="arcade-app"],
+  :has(#app-5:checked) [aria-label="Selecteer"] > label[for="muziek-app"],
+  :has(#app-6:checked) [aria-label="Selecteer"] > label[for="netflix-app"] {
+    display: block;
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+
+  /* Terug-knop: label bedekt de hele knop */
+  [aria-label="Terug"] {
+    position: relative;
+  }
+
+  [aria-label="Terug"] > label {
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 1;
+  }
+
+  /* TV aan/uit animaties */
+  :has([name="aan-uit"][value="aan"]:checked) main > section:first-of-type {
+    animation: crt-aan 0.5s ease-out forwards;
+  }
+
+  :has([name="aan-uit"][value="uit"]:checked) main > section:first-of-type {
+    animation: crt-uit 0.5s ease-in forwards;
+  }
+
+  /* Actieve app oplichten */
+  :has(#app-1:checked) ul:first-of-type li:nth-child(1) img,
+  :has(#app-2:checked) ul:first-of-type li:nth-child(2) img,
+  :has(#app-3:checked) ul:first-of-type li:nth-child(3) img,
+  :has(#app-4:checked) ul:first-of-type li:nth-child(4) img,
+  :has(#app-5:checked) ul:first-of-type li:nth-child(5) img,
+  :has(#app-6:checked) ul:first-of-type li:nth-child(6) img,
+  /* Actieve app oplichten */
+  :has(#app-1:checked) ul li:nth-child(1) img,
+  :has(#app-2:checked) ul li:nth-child(2) img,
+  :has(#app-3:checked) ul li:nth-child(3) img,
+  :has(#app-4:checked) ul li:nth-child(4) img,
+  :has(#app-5:checked) ul li:nth-child(5) img,
+  :has(#app-6:checked) ul li:nth-child(6) img {
+    outline: 2px solid var(--kleur-wit);
+    outline-offset: 3px;
+    transform: scale(1.09);
+    transition: transform 0.2s ease-in-out;
+  }
+
+  /* Rechts: toon het juiste label op basis van actieve app */
+  :has(#app-1:checked) [aria-label="Rechts"] label[for="app-2"],
+  :has(#app-2:checked) [aria-label="Rechts"] label[for="app-3"],
+  :has(#app-3:checked) [aria-label="Rechts"] label[for="app-4"],
+  :has(#app-4:checked) [aria-label="Rechts"] label[for="app-5"],
+  :has(#app-5:checked) [aria-label="Rechts"] label[for="app-6"] {
+    display: block;
+  }
+
+  /* Links: toon het juiste label op basis van actieve app */
+  :has(#app-2:checked) [aria-label="Links"] label[for="app-1"],
+  :has(#app-3:checked) [aria-label="Links"] label[for="app-2"],
+  :has(#app-4:checked) [aria-label="Links"] label[for="app-3"],
+  :has(#app-5:checked) [aria-label="Links"] label[for="app-4"],
+  :has(#app-6:checked) [aria-label="Links"] label[for="app-5"] {
+    display: block;
+  }
+}
+
+@layer muziek {
+  main > section:first-of-type > article {
+    display: none;
+  }
+
+  /* Netflix scherm */
+  main > section:first-of-type > article:nth-of-type(1),
+  main > section:first-of-type > article:nth-of-type(2) {
+    display: none;
+  }
+
+  :has(#arcade-app:checked)
+    main
+    > section:first-of-type
+    > article:nth-of-type(2) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    inset: 0;
+    background: #000;
+    border-radius: inherit;
+    z-index: 10;
+
+    & > p {
+      display: none;
+    }
+
+    & > video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit;
+    }
+  }
+
+  :has(#netflix-app:checked)
+    main
+    > section:first-of-type
+    > article:nth-of-type(1) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    inset: 0;
+    background: #000;
+    border-radius: inherit;
+    z-index: 10;
+    gap: 1rem;
+
+    & > p {
+      color: #e50914;
+      font-size: 2rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+    }
+
+    & > video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit;
+    }
+  }
+
+  :has(#muziek-app:checked)
+    main
+    > section:first-of-type
+    > article:nth-of-type(3) {
+    display: grid;
+    grid-template-rows: auto 1fr auto auto auto;
+    position: absolute;
+    inset: 0;
+    padding: 1.2rem 2rem 1.5rem;
+    background: #b0b0b8;
+    border-radius: inherit;
+    z-index: 10;
+    gap: 0.6rem;
+    align-items: center;
+  }
+
+  /* Terug label */
+  main > section:first-of-type > article > label {
+    color: var(--kleur-wit);
+    font-size: 0.75rem;
+    cursor: pointer;
+    justify-self: start;
+    font-weight: 500;
+  }
+
+  /* Album art */
+  main > section:first-of-type > article > figure {
+    margin: 0;
+    justify-self: center;
+    width: clamp(140px, 45%, 240px);
+    aspect-ratio: 1;
+    background: #d4d4d8;
+    border-radius: 0.8rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    & > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 1;
+    }
+  }
+
+  /* Titel + artiest */
+  main > section:first-of-type > article > div {
+    text-align: left;
+
+    & > p {
+      margin: 0;
+      font-size: clamp(0.85rem, 1.5vw, 1.1rem);
+      font-weight: 600;
+      color: var(--kleur-wit);
+    }
+
+    & > span {
+      font-size: clamp(0.7rem, 1.1vw, 0.85rem);
+      color: rgba(255, 255, 255, 0.7);
+    }
+  }
+
+  /* Knoppen */
+  main > section:first-of-type > article > nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & > button {
+      background: none;
+      border: none;
+      color: var(--kleur-wit);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.3rem;
+    }
+  }
+}
+
+@layer animaties {
+  @keyframes draai {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Bron: https://prismic.io/blog/css-text-animations */
+  @keyframes schaduw-dans {
+    0% {
+      text-shadow:
+        4px 4px 0 #f5f5f7,
+        -4px -4px 0 #0a84ff;
+    }
+    50% {
+      text-shadow:
+        -4px -4px 0 #f5f5f7,
+        4px 4px 0 #0a84ff;
+    }
+    100% {
+      text-shadow:
+        4px 4px 0 #f5f5f7,
+        -4px -4px 0 #0a84ff;
+    }
+  }
+
+  @keyframes golf {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-6px);
+    }
+  }
+
+  @keyframes crt-uit {
+    0% {
+      transform: scaleY(1) scaleX(1);
+      filter: brightness(1);
+    }
+    40% {
+      transform: scaleY(0.02) scaleX(1);
+      filter: brightness(4);
+    }
+    70% {
+      transform: scaleY(0.02) scaleX(0.2);
+      filter: brightness(2);
+    }
+    100% {
+      transform: scaleY(0) scaleX(0);
+      filter: brightness(0);
+    }
+  }
+
+  @keyframes crt-aan {
+    0% {
+      transform: scaleY(0) scaleX(0);
+      filter: brightness(0);
+    }
+    30% {
+      transform: scaleY(0.02) scaleX(0.2);
+      filter: brightness(2);
+    }
+    60% {
+      transform: scaleY(0.02) scaleX(1);
+      filter: brightness(4);
+    }
+    100% {
+      transform: scaleY(1) scaleX(1);
+      filter: brightness(1);
+    }
+  }
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  body {
+    height: auto;
+    overflow-y: auto;
+  }
+
+  main {
+    grid-template-columns: 1fr;
+    height: auto;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  main > section:first-of-type {
+    width: 100%;
+    height: auto;
+  }
+
+  main > section:first-of-type > div:first-of-type {
+    padding: 0.2rem 0.75rem 0.2rem 0.6rem;
+    gap: 0.3rem;
+  }
+
+  main > section:first-of-type > div:first-of-type > time {
+    font-size: 0.7rem;
+  }
+
+  main > section:first-of-type > div:first-of-type > img {
+    width: 18px;
+    height: 18px;
+  }
+
+  main > section:first-of-type > article:nth-of-type(3) {
+    padding: 0.6rem 1rem;
+    gap: 0.3rem;
+  }
+
+  main > section:first-of-type > article > figure {
+    width: clamp(60px, 18vw, 100px);
+  }
+
+  main > section:first-of-type > article > nav svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  main > section:first-of-type ul {
+    padding: 0.4rem 0.5rem;
+    gap: 0.3rem;
+    margin: 0 0.4rem;
+    border-radius: 0.75rem;
+  }
+
+  main > section:first-of-type ul li img {
+    width: clamp(46px, 11vw, 68px);
+    border-radius: 0.4rem;
+  }
+
+  main > section:last-of-type {
+    width: fit-content;
+    height: auto;
+    justify-self: center;
+    transform: scale(0.6);
+    transform-origin: top center;
+    margin-bottom: -22rem;
+    padding: 7rem 1rem;
+  }
+
+  main > section:last-of-type > section {
+    width: 185px;
+    height: 185px;
+  }
+
+  main > section:last-of-type > section > [aria-label="Selecteer"] {
+    width: 115px;
+    height: 115px;
+  }
+
+  main > section:last-of-type > nav {
+    width: 185px;
+    height: 275px;
+  }
+
+  main > section:last-of-type > nav > button {
+    width: 75px;
+    height: 75px;
+  }
+
+  main > section:last-of-type > nav > span {
+    width: 75px;
+    height: 165px;
+  }
+}
