@@ -36,10 +36,7 @@ Deze week had ik nog geen feedbackmoment. Ik was bezig met het concept uitwerken
 **Wat heb ik gedaan?**
 Deze week ben ik verder gegaan met de interactie van de remote. Na de feedback van Sanne ben ik overgestapt van checkboxes naar radio buttons zodat ik de :has()-selector kan gebruiken voor de navigatie. Ik heb de structuur van de HTML aangepast en de CSS opnieuw opgebouwd zodat de radio buttons de navigatie door de apps kunnen sturen. Ook ben ik bezig geweest met de styling van het Apple Tv scherm zelf, zodat de apps zichtbaar worden en je visueel kunt zien welke app geselecteerd is. De trackpad begint nu te werken als navigatie-element. Het kost nog wat moeite om alles goed op elkaar aan te laten sluiten maar het begint vorm te krijgen.
 
-![Week 2 overzicht van de voortgang](/images/readme/uitleg-sanne.png)
-![Radio button structuur in HTML](/images/readme/week2-radio-buttons.png)
-![Apple TV scherm met app navigatie](/images/readme/week2-tv-scherm.png)
-![CSS :has() selector in gebruik](/images/readme/week2-has-selector.png)
+![Week 2 overzicht van de voortgang](/images/readme/uitleg-sanne.JPG)
 
 **Hoe lang duurde het?**
 Duurde ongeveer 8 a 10 uurtjes
@@ -62,24 +59,18 @@ Sanne heeft mij deze week laten zien hoe ik de structuur van de remote moest aan
 
 - https://www.svgrepo.com
 
----
-
 ## week 3
 
 ### Week 3 25/05 - 31/05
 
 **Wat heb ik gedaan?**
 Deze week stond in het teken van finishing touches en het project verder uitwerken. Ik heb nieuwe apps toegevoegd aan de dock en een echte achtergrond afbeelding van Apple TV als achtergrond van het scherm gezet. Ook heb ik een profiel widget rechtsboven toegevoegd met de tijd en mijn memoji, net zoals op een echte Apple TV. Het glass effect van de dock heb ik verder verbeterd met `backdrop-filter`, `linear-gradient` en `inset box-shadow` zodat het er echt uitziet als glas. Daarnaast heb ik de code opgeschoond — overbodige inputs voor app-7, 8 en 9 weggehaald en de structuur leesbaarder gemaakt door de inputs in de `<li>` elementen te plaatsen bij hun bijbehorende app.
-
-![Week 3 overzicht](/images/readme/week3-overzicht.png)
-![Glass effect dock](/images/readme/week3-glass-effect.png)
-![Profiel widget](/images/readme/week3-profiel.png)
 ![Achtergrond van het Apple TV scherm](/images/readme/achtergronden.png)
 ![Memoji profielwidget toegevoegd](/images/readme/memoji.png)
 ![Zijkant van de remote klopte nog niet](/images/readme/zijkant%20niet%20nice.png)
 
 **Hoe lang duurde het?**
-Ongeveer 8 à 10 uur
+Ongeveer 6 uurtjes
 
 **Wat heb ik geleerd?**
 Ik heb geleerd hoe je een realistisch glassmorphism effect maakt met alleen CSS. Het combineren van `backdrop-filter: blur()`, `brightness()`, `saturate()` en meerdere `box-shadow` waarden geeft een veel mooier resultaat dan een simpele transparante achtergrond. Ook heb ik geleerd hoe je code overzichtelijk houdt door inputs dicht bij hun bijbehorende elementen te plaatsen.
@@ -95,12 +86,6 @@ Goede week. Het project begint er echt professioneel uit te zien. Het glassmorph
 
 Luna Jay heeft naar mijn project gekeken en feedback gegeven over de visuele afwerking. Ze vond het concept sterk maar gaf aan dat het scherm er meer uit kon zien als een echte Apple TV — met een echte achtergrond, een profiel widget en een mooiere dock. Op basis van deze feedback heb ik de achtergrondafbeelding toegevoegd, het glassmorphism effect van de dock verbeterd en de profiel widget met memoji rechtsboven gezet.
 
-#### Bronnenlijst
-
-- https://www.svgrepo.com
-
----
-
 ## week 4
 
 ### Week 4 01/06 - 07/06
@@ -112,16 +97,13 @@ Daarnaast heb ik de responsive versie gebouwd. De grootste uitdaging was de remo
 
 Tot slot heb ik een geanimeerde titel toegevoegd met een dancing shadow effect en een wavy beweging. De schaduwen wisselen tussen wit en Apple-blauw in alle richtingen, terwijl de tekst zachtjes op en neer beweegt.
 
-![Week 4 overzicht](/images/readme/week4-overzicht.png)
-![App openen muziek](/images/readme/week4-muziek-app.png)
-![Knop klik effect](/images/readme/week4-knop-effect.png)
 ![Remote was nog niet goed genoeg](/images/readme/remote%20niet%20goed%20.png)
 ![Responsive versie klopte nog niet](/images/readme/responsive%20niet%20goed%20genoeg.png)
 ![Proces van de responsive remote uitwerken](/images/readme/proces%20remote%20responsive.png)
 ![Puntjes op de i — eindresultaat](/images/readme/puntjes%20op%20de%20i.png)
 
 **Hoe lang duurde het?**
-Ongeveer 8 à 10 uur
+Ongeveer 4 uurtjes
 
 **Wat heb ik geleerd?**
 Ik heb geleerd hoe je met radio buttons in combinatie met `:has()` meerdere onafhankelijke states kunt bijhouden. Door `name="scherm"` te gebruiken voor de app-schermen en `name="app"` voor de navigatie, werken de twee systemen los van elkaar. Ook heb ik geleerd hoe je met `:active` en `transform` een fysiek klik-gevoel simuleert zonder JavaScript.
@@ -129,7 +111,7 @@ Ik heb geleerd hoe je met radio buttons in combinatie met `:has()` meerdere onaf
 Ik heb ook geleerd hoe belangrijk het is om de desktop versie goed op te bouwen voordat je responsive gaat werken — als de verhoudingen op desktop kloppen, is schalen op mobiel veel makkelijker. Verder heb ik ontdekt hoe handig de designer in de Google Chrome inspector is: je ziet letterlijk live wat je aanpast en hoe de stijlen op elkaar inwerken, zonder steeds de code te hoeven opslaan.
 
 **Wat ga ik volgende week doen?**
-Het project inleveren.
+Het project inleveren. Laatste puntjes op de i. Read me afschrijvne
 
 #### Week reflectie
 
@@ -139,9 +121,25 @@ De beste week tot nu toe. De interactie voelt nu echt aan als een echte Apple TV
 
 Choice heeft deze week naar het eindresultaat gekeken. Ze vond de CRT-animatie een leuk detail en het concept sterk. Ze gaf aan dat de apps ook echt openbaar moesten zijn via de selecteer-knop en niet alleen visueel geselecteerd. Daarnaast vond ze dat de remote nog niet goed genoeg was — de responsive versie klopte nog niet en de knoppen schaalden niet mee zoals het hoorde. Op basis van die feedback heb ik de muziek-app, Netflix en Arcade werkend gemaakt via de selecteer-knop, en ben ik verder gegaan met de responsive remote zodat alles correct meeschaftt op mobiel.
 
-#### Bronnenlijst
+## Bronnenlijst
 
-- https://www.svgrepo.com — voor de SVG iconen van de remote knoppen
+### Gebruikte tools & assets
+
+- https://www.svgrepo.com — SVG iconen van de remote knoppen
 - https://www.figma.com — Figma Dev voor de layout en structuur van het Apple TV scherm
-- CSS glassmorphism — `backdrop-filter`, `linear-gradient` en `inset box-shadow` gecombineerd voor het glass effect op de dock
-- https://prismic.io/blog/css-text-animations — voor de dancing shadow en wavy text animaties op de titel
+- https://cssgrid-generator.netlify.app — CSS Grid generator voor de opbouw van de remote layout
+
+### CSS technieken
+
+- https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter — glassmorphism effect op de dock
+- https://www.joshwcomeau.com/css/backdrop-filter/ — uitleg over next-level frosted glass met backdrop-filter
+- https://css.glass — glassmorphism CSS generator, gebruikt als referentie voor het glass effect
+- https://prismic.io/blog/css-text-animations — dancing shadow en wavy text animaties op de titel
+- https://css-tricks.com/the-radio-state-machine/ — radio buttons als state machine, basis voor de CSS-only navigatie
+- https://moderncss.dev/pure-css-custom-styled-radio-buttons/ — styling van radio buttons met pure CSS
+- https://developer.mozilla.org/en-US/docs/Web/CSS/:has — uitleg over de :has() selector voor de app-navigatie
+
+### Animaties & interactie
+
+- https://codepen.io/francescostella/pen/ONaWvZ — TV turn-off animatie, inspiratie voor de CRT-uit animatie
+- https://developer.mozilla.org/en-US/docs/Web/API/AudioContext — klik geluid via Web Audio API
